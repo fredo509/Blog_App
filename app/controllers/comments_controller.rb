@@ -9,9 +9,11 @@ class CommentsController < ApplicationController
 
   def create
     @my_comment = Comment.new(comment_params)
+  
     respond_to do |format|
       if @my_comment.save
         format.html { redirect_to user_post_path(user_id: params[:user_id], id: params[:post_id]), notice: "Comment Added :)" }
+        @my_comment.update_comments_counter
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -21,7 +23,7 @@ class CommentsController < ApplicationController
   def destroy
     @my_comment = Comment.find(params[:id])
     @my_post = @my_comment.post
-    @my_post.decrement!(:comments_counter)
+    @my_post.decrease_comments_counter
     @my_comment.destroy
 
     respond_to do |format|
