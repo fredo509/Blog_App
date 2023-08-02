@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       col.text :bio
       col.integer :number_of_post, default: 0
       col.timestamps
-      col.timestamps
     end
   end
 end
