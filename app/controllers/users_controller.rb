@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @my_users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
-    @user.number_of_post = @user.posts.count
+    @my_user = User.find(params[:id])
+    @my_user.number_of_post = @user.posts.count
   end
 end
