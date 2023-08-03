@@ -1,37 +1,55 @@
 class PostsController < ApplicationController
-  def index
-    @my_user = User.find(params[:author_id])
-    @my_posts = @my_user.posts.includes(:comments, :likes)
-  end
+  load_and_authorize_resource
 
-  def show
-    @my_post = Post.find(params[:id])
+  def index
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.includes([:comments])
   end
 
   def new
-    @my_post = Post.new
+    @post = Post.new
+    @current_user = current_user
+  end
+
+  def show
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:id])
+    @comments = Comment.includes([:author]).where(post_id: params[:id]).order(created_at: :desc).limit(5)
   end
 
   def create
-    @my_post = current_user.posts.new(post_params)
-
-    if @my_post.save
-      redirect_to user_path(id: @my_post.author_id), notice: 'Post created :)'
+    @post = Post.new(post_params)
+    @post.author = current_user
+    @post.likes_counter = 0
+    @post.comments_counter = 0
+    if @post.save
+      flash[:notice] = 'Post created successfully'
+      redirect_to user_posts_path(current_user)
     else
-      flash.now[:alert] = 'There is something wrong try again.'
-      render :new
+      flash[:alert] = 'Post creation failed'
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @my_post = Post.find(params[:id])
-    @my_author = @my_post.author
-    @my_author.decrement!(:number_of_post)
-    @my_post.destroy!
-    redirect_to user_posts_path(id: @my_author.id), notice: 'Post removed :)'
+    @post = Post.find(params[:id])
+    @user = @post.author
+    delete_post_and_its_related_objects(@post)
+    @user.posts_counter -= 1
+    flash[:notice] = 'Post deleted successfully'
+
+    redirect_to user_posts_path(@user) if @user.save
   end
 
   private
+
+  def delete_post_and_its_related_objects(post)
+    if post.comments_counter.positive? || post.likes_counter.positive?
+      post.comments.each(&:destroy) if post.comments_counter.positive?
+      post.likes.each(&:destroy) if post.likes_counter.positive?
+    end
+    post.destroy
+  end
 
   def post_params
     params.require(:post).permit(:title, :text)
