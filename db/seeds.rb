@@ -13,23 +13,23 @@ author_two = User.create(
   photo: 'https://th.bing.com/th/id/OIP.tzJ7VBPE13IvTKlgFXNZ6AHaJ9?pid=ImgDet&w=191&h=256&c=7', 
   bio: 'Actor profesional.',
   role: 'admin', 
-  email: 'fred@example.com', 
+  email: 'jhonny@example.com', # Change the email to a unique one
   username: 'Jhon', 
   password: '123456'
 )
 
 4.times do
- my_post = Post.create(
-    author: author_one, 
+  my_post = Post.create(
+    user_id: author_one.id, # Use the ID of the author user, not the author_one object
     title: 'Ruby on Rails', 
     text: 'This is my favorite framework'
   )
 
-  puts "Post Title: #{first_post.title}"
-  puts "Post Author: #{first_post.author.name}"
+  puts "Post Title: #{my_post.title}"
+  puts "Post Author: #{my_post.user.name}" # Use my_post.user.name to access the author's name
 
-  Comment.create(post:my_post, author: author_two, text: 'Hi Fredo!')
-  Comment.create(post:my_post, author: author_two, text: 'I like ruby on rails too!')
+  Comment.create(post: my_post, user_id: author_two.id, text: 'Hi Fredo!')
+  Comment.create(post: my_post, user_id: author_two.id, text: 'I like Ruby on Rails too!')
 
-  puts "Comments for Post: #{first_post.comments.count}"
+  puts "Comments for Post: #{my_post.comments.count}"
 end
