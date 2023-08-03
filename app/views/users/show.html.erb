@@ -1,0 +1,45 @@
+<% content_for :page_stylesheets do %>
+  <%= stylesheet_link_tag 'index_view', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'index_show', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<main>
+  <section>
+    <ul>
+        <%= link_to user_path(@my_user), class: 'link' do %>
+          <li class="user_card_post">
+            <%= image_tag(@my_user.photo, class: 'user_photo') %>
+            <div class="info_block">
+              <div class="name_bio">
+                <h1 class="user_name post_name"><%= (@my_user.name) %></h1>
+                <p class="user_bio"><%= (@my_user.bio) %></p>
+              </div>
+              <%= link_to "Add a post", new_user_post_path(@my_user), class: "btn_add_post" %>
+              <p class="post_number">Number of posts: <%= @my_user.number_of_post %></p>
+            </div>   
+          </li>
+        <% end %>
+    </ul>  
+  </section>
+  
+  <section class="">
+    <ul>
+      <% @my_user.posts.each do |post| %>
+        <%= link_to user_post_path(@my_user, post), class:'link' do %>
+          <li class="post_block">
+           <p class="post_index">Post #<%= (post.id) %></p>
+            <h3 class="post_title"><%= post.title %></h3>
+            <h4 class="post_text"><%= post.text %></h4>
+            <div class="box_l_c">
+              <span>Comments: <%= post.comments_counter %></span>
+              <span>Likes: <%= post.likes_counter %></span>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <div class="show_all">
+      <%= link_to "Show all posts", user_posts_path(user_id: @my_user.id), class: "show_btn" %>
+    </div>
+  </section> 
+</main>
