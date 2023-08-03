@@ -1,0 +1,88 @@
+.btn_add_post {
+  align-self: right;
+  margin-bottom: 30px;
+  background-color: black;
+  color: white;
+  width: 25px;
+  height: 15px;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0.3rem;
+}
+
+.btn_add_post:hover {
+  background-color: lightseagreen;
+  box-shadow: inset 2px 2px 5px 0px #333;
+  color: black;
+}
+
+.post_name {
+  margin-bottom: -20px;
+  color: black;
+}
+
+.user_bio {
+  margin-bottom: 20px;
+  color: lightseagreen;
+}
+
+.name_bio {
+  margin-top: -25px;
+  padding-bottom: 20px;
+}
+
+.post_block {
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-decoration: none;
+  padding-left: 10px;
+  height: auto;
+}
+
+.post_index {
+  font-size: 13px;
+  color: black;
+  text-decoration: none;
+}
+
+.post_title {
+  text-align: left;
+  align-self: left;
+  margin: 0;
+  color: blue;
+}
+
+.box_l_c {
+  align-self: right;
+  width: 98%;
+  text-align: right;
+  margin-right: 20px;
+  padding-bottom: 5px;
+  color: blue;
+}
+
+.show_all {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.show_btn {
+  text-align: center;
+  color: white;
+  align-self: center;
+  text-decoration: none;
+  background-color: black;
+  width: 25px;
+  height: 15px;
+  padding: 10px;
+  border-radius: 0.3rem;
+}
+
+.show_btn:hover {
+  background-color: lightseagreen;
+  box-shadow: inset 2px 2px 5px 0px #333;
+  color: black;
+}
