@@ -31,7 +31,9 @@ li {
 }
 
 li:hover {
-  border: 3px solid lightseagreen;
+  background-color: lightseagreen;
+  box-shadow: inset 2px 2px 5px 0px #333;
+  color: black;
 }
 
 .user_name {
@@ -43,6 +45,10 @@ li:hover {
   text-align: right;
   margin-right: 10px;
   margin-top: -10px;
+}
+
+.user_card_post:hover {
+  background-color: white;
 }
 
 .info_block {
