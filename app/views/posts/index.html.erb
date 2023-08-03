@@ -1,0 +1,46 @@
+<% content_for :page_stylesheets do %>
+  <%= stylesheet_link_tag 'post_index', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<main>
+  <section>
+    <ul>
+      <li class="user_card_post">
+            <%= image_tag(@user.photo, class: 'user_photo') %>
+          <div class="info_block">
+              <div class="name_bio">
+                <h1 class="user_name post_name"><%= (@user.name) %></h1>
+                <p class="user_bio"><%= (@user.bio) %></p>
+              </div>
+              <p class="post_number">Number of posts: <%= @user.number_of_post %></p>
+          </div>   
+      </li>
+    </ul>  
+  </section>
+   <section class="">
+    <ul>
+      <% @user.posts.includes([:comments]).each do |post| %>
+        <%= link_to user_post_path(user_id: post.author_id, id: post.id), class:'link' do %>
+          <li class="post_block">
+           <p class="post_index">Post #<%= (post.id) %></p>
+            <h3 class="post_title"><%= post.title %></h3>
+            <h4 class="post_text"><%= post.text %></h4>
+            <div class="box_l_c">
+              <span>Comments: <%= post.comments_counter %></span>
+              <span>Likes: <%= post.likes_counter %></span>
+            </div>
+          </li>
+          <li class="user_card_post comment_card">
+            <div>
+              <h4 class="comment_title">Comments:</h4>
+              <ul>
+                <% post.recent_comments.each do |comment| %>
+                  <p><%= comment.author.name %>: <%= comment.text %></p>
+                <% end %>
+              </ul>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section> 
+</main>
