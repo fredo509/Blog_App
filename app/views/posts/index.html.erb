@@ -16,7 +16,7 @@
       </li>
     </ul>  
   </section>
-   <section class="">
+   <section>
     <ul>
       <% @user.posts.includes([:comments]).each do |post| %>
         <%= link_to user_post_path(user_id: post.author_id, id: post.id), class:'link' do %>
