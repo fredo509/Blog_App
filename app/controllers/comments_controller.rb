@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   
     respond_to do |format|
       if @my_comment.save
-        format.html { redirect_to user_post_path(user_id: params[:user_id], id: params[:post_id]), notice: "Comment Added :)" }
+        format.html { redirect_to user_post_path(author_id: params[:author_id], id: params[:post_id]), notice: "Comment Added :)" }
         @my_comment.update_comments_counter
       else
         format.html { render :new, status: :unprocessable_entity }
