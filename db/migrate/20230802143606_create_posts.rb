@@ -3,9 +3,8 @@ class CreatePosts < ActiveRecord::Migration[7.0]
     create_table :posts do |col|
       col.string :title
       col.text :text
-      col.integer :comments_count
-      col.integer :likes_count
-      col.references :user, null: false, foreign_key: true
+      col.integer :comments_counter, default: 0
+      col.integer :likes_counter, default: 0
       col.timestamps
     end
   end

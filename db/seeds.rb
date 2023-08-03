@@ -20,16 +20,16 @@ author_two = User.create(
 
 4.times do
   my_post = Post.create(
-    user_id: author_one.id, # Use the ID of the author user, not the author_one object
+    author: author_one,
     title: 'Ruby on Rails', 
     text: 'This is my favorite framework'
   )
 
   puts "Post Title: #{my_post.title}"
-  puts "Post Author: #{my_post.user.name}" # Use my_post.user.name to access the author's name
+  puts "Post Author: #{my_post.author.name}" # Use my_post.user.name to access the author's name
 
-  Comment.create(post: my_post, user_id: author_two.id, text: 'Hi Fredo!')
-  Comment.create(post: my_post, user_id: author_two.id, text: 'I like Ruby on Rails too!')
+  Comment.create(post: my_post, author: author_two, text: 'Hi Fredo!')
+  Comment.create(post: my_post, author: author_two, text: 'I like Ruby on Rails too!')
 
-  puts "Comments for Post: #{my_post.comments.count}"
+  puts "Comments for Post: #{my_post.comments_counter}"
 end
