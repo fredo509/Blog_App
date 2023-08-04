@@ -1,9 +1,11 @@
-<h1>New comment</h1>
-
-<%= render "form", comment: @comment %>
-
-<br>
-
 <div>
-  <%= link_to "Back to comments", comments_path %>
+    <%= form_with model: @comment, url: user_post_comments_path, data: { turbo: false } do |form| %>
+      <div>
+        <%= form.label :text %>
+        <%= form.text_area :text %>
+      </div>
+      <div class="text-center">
+        <%= form.submit "Create Comment" %>
+      </div>
+    <% end %>
 </div>
