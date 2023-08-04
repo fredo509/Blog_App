@@ -11,7 +11,7 @@ class User < ApplicationRecord
   attribute :encrypted_password, :string
 
   validates :name, presence: true
-  validates :posts_counter, numericality: { greater_than_or_equal_to: 0 }
+  validates :number_of_post, numericality: { greater_than_or_equal_to: 0 }
 
 
   def update_posts_counter
