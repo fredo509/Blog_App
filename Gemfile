@@ -81,6 +81,7 @@ group :test do
   gem "webdrivers"
   gem "rspec-core"
   gem "rspec-expectations"
-  gem "rspec-rails"
   gem "rspec-mocks"
+  gem "rspec-rails"
+  gem 'rails-controller-testing'
 end
