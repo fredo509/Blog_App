@@ -14,6 +14,13 @@ development:
   #kindly replace your database password
   password: 1234
 
+production:
+  <<: *default
+  database: Blog_app_development
+  username: postgres
+  #kindly replace your database password
+  password: 1234
+
 test:
   <<: *default
   database: Blog_app_test
