@@ -13,7 +13,10 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :number_of_post, numericality: { greater_than_or_equal_to: 0 }
 
-
+  def recent_posts
+    posts.order(created_at: :desc).limit(3)
+  end
+  
   def update_posts_counter
     update(number_of_post: posts.count)
   end
