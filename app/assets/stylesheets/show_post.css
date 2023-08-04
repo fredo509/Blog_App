@@ -29,9 +29,16 @@
   align-items: center;
 }
 
-
 .action_btn {
   display: flex;
-  background-color: yellow;
   width: 100%;
+  align-items: center;
 } 
+
+.btn {
+  margin-left: 10px;
+}
+
+.text_c {
+margin-right: 10px;
+}
