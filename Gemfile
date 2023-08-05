@@ -16,6 +16,8 @@ gem 'bcrypt'
 
 gem 'cancancan'
 
+gem 'jwt'
+
 
 
 # Use the Puma web server [https://github.com/puma/puma]
