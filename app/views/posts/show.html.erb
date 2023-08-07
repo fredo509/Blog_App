@@ -1,0 +1,44 @@
+<% content_for :page_stylesheets do %>
+  <%= stylesheet_link_tag 'show_post', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<main>
+
+  <section>
+    <ul>
+      <% @user.posts.includes([:comments]).each do |post| %>
+        <%= link_to user_post_path(user_id: post.author_id, id: post.id), class:'link' do %>
+          <li class="post_block">
+           <p class="post_index">Post #<%= (post.id) %></p>
+            <h3 class="post_title"><%= post.title %></h3>
+            <h4 class="post_text"><%= post.text %></h4>
+            <div class="box_l_c">
+              <span>Comments: <%= post.comments_counter %></span>
+              <span>Likes: <%= post.likes_counter %></span>
+            </div>
+          </li>
+          <li class="user_card_post comment_card">
+            <div>
+              <h4 class="comment_title">Comments:</h4>
+              <ul>
+                <% post.recent_comments.each do |comment| %>
+                  <div class="action_btn">
+                      <p class="text_c"><%= comment.author.name %>: <%= comment.text %></p>
+                      <% if user_signed_in? %>
+                        <%= link_to "Add a comment", new_user_post_comment_path(user_id: @post.author_id, post_id: @post.id ), class: "btn" %>
+                        <%= form_with model: @like, url: user_post_likes_path(post_id: @post.id) do |form| %>
+                          <%= form.submit "Like", class: "btn" %>
+                        <% end %>
+                        <% if can? :destroy, @post %>
+                          <%= button_to "Delete post", user_post_path(user_id: @post.author.id, post_id: @post.id), method: :delete, class: "btn"  %>
+                        <% end %>
+                      <% end %>
+                  </div>
+                <% end %>
+              </ul>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section> 
+</main>

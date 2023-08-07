@@ -1,0 +1,66 @@
+.main_page {
+  margin: auto;
+  padding: 0;
+  gap: 0;
+}
+
+.user_photo {
+  width: 120px;
+  height: 120px;
+  box-sizing: border-box;
+  margin: 8px;
+}
+
+ul {
+  margin:25px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 10px;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  border: 3px solid black;
+}
+
+li:hover {
+  background-color: lightseagreen;
+  box-shadow: inset 2px 2px 5px 0px #333;
+  color: black;
+}
+
+.user_name {
+  text-decoration-style: none;
+  font-size: 40px;
+}
+
+.post_number {
+  text-align: right;
+  margin-right: 10px;
+  margin-top: -10px;
+}
+
+.user_card_post:hover {
+  background-color: white;
+}
+
+.info_block {
+  width: 90%;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: lightseagreen;
+}
