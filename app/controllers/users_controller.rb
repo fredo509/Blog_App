@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @my_users = User.all.includes(:posts)
+    @my_users = User.joins(:posts).distinct
+
     @my_users.each do |user|
       user.number_of_post = user.posts.count
       user.save
