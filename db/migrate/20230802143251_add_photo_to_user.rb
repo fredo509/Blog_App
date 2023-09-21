@@ -4,7 +4,6 @@ class AddPhotoToUser < ActiveRecord::Migration[7.0]
       col.string :photo
       col.text :bio
       col.integer :number_of_post, default: 0
-      col.timestamps
     end
   end
 end
