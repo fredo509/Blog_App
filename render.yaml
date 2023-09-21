@@ -5,7 +5,7 @@ databases:
 
 services:
   - type: web
-    name: app-food
+    name: blog-app
     plan: free
     env: ruby
     buildCommand: "./bin/render-build.sh"
