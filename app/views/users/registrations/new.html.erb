@@ -1,40 +1,61 @@
-<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
-
-  
+  <style>
+    .container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      padding: 0;
+      margin-bottom: 30px;
+      box-sizing: border-box;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+  </style>
+<div class="container">
+    <h2>Sign up</h2>
   <div class="fiel">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
 
-   <div class="fiel">
+   <div class="form-group">
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
   </div>
 
-  <div class="field">
+  <div class="from-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <br>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> characters)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+   <div class="from-group">
+    <%= f.label :photo %><br />
+    <%= f.text_field :photo %>
+  </div>
+
+  <div class="from-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
+  <div class="from-group">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
+  </div>
 <%= render "users/shared/links" %>

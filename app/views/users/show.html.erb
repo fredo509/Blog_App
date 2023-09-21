@@ -15,7 +15,7 @@
                 <p class="user_bio"><%= (@my_user.bio) %></p>
               </div>
               <%= link_to "Add a post", new_user_post_path(@my_user), class: "btn_add_post" %>
-              <p class="post_number">Number of posts: <%= @my_user.number_of_post %></p>
+              <p class="post_number">Post: <%= @my_user.number_of_post %></p>
             </div>   
           </li>
         <% end %>

@@ -9,8 +9,8 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <p class=""><%= notice %></p>
+      <p class=""><%= alert %></p>
       <div id="sign_out">
       <% if user_signed_in? %>
           <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>

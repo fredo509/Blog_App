@@ -1,7 +1,7 @@
 author_one = User.create(
   name: 'Fredo',
-  photo: 'https://th.bing.com/th/id/R.7bef3acf80b4711c6de8115d2d775498?rik=oKsNFA%2flG5lGXg&riu=http%3a%2f%2fkrewfirm.files.wordpress.com%2f2010%2f07%2f2009_diary_of_a_tired_black_man_001.jpg&ehk=5HEpTg0xdXCQ3SvDtF%2brKjSoVdmZdczBl85tRTCsBks%3d&risl=&pid=ImgRaw&r=0', 
-  bio: 'Developer Web.',
+  photo: 'https://media.licdn.com/dms/image/D4E03AQHZKJyzb2siqg/profile-displayphoto-shrink_800_800/0/1667072470390?e=1700697600&v=beta&t=8EF58YJvYUQG_bGVWDJGbCXzV_UJfHhXddKqwLurYkg', 
+  bio: 'Full Stack Web Developer',
   role: 'admin', 
   email: 'fred@example.com', 
   username: 'Fred', 
@@ -18,18 +18,17 @@ author_two = User.create(
   password: '123456'
 )
 
-4.times do
-  my_post = Post.create(
-    author: author_one,
-    title: 'Ruby on Rails', 
-    text: 'This is my favorite framework'
-  )
+my_post = Post.create(
+  author: author_one,
+  title: 'Ruby on Rails', 
+  text: 'This is my favorite framework'
+)
 
-  puts "Post Title: #{my_post.title}"
-  puts "Post Author: #{my_post.author.name}" # Use my_post.user.name to access the author's name
+puts "Post Title: #{my_post.title}"
+puts "Post Author: #{my_post.author.name}" # Use my_post.user.name to access the author's name
 
-  Comment.create(post: my_post, author: author_two, text: 'Hi Fredo!')
-  Comment.create(post: my_post, author: author_two, text: 'I like Ruby on Rails too!')
+Comment.create(post: my_post, author: author_two, text: 'Hi Fredo!')
+Comment.create(post: my_post, author: author_two, text: 'I like Ruby on Rails too!')
 
-  puts "Comments for Post: #{my_post.comments_counter}"
-end
+puts "Comments for Post: #{my_post.comments_counter}"
+
