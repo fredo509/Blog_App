@@ -1,4 +1,4 @@
-class AddPhotoToUsers < ActiveRecord::Migration[7.0]
+class AddPhotoToUser < ActiveRecord::Migration[7.0]
   def change
     change_table :users do |col|
       col.string :photo
